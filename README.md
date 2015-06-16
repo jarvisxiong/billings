@@ -6,3 +6,7 @@ PC网页方面并不完善，后期已没有再开发。客户端请使用Androi
 截止2015-06-07，此项目不再维护。<br>
 
 网站：http://bill.vpigirl.com<br>
+
+
+你需要自己注册极光推送账号(https://www.jpush.cn/)并把你自己的appkey和mastersecret写在AndroidManifest.xml文件中。<br/>
+同时如果你的应用也想使用QQ登录，你需要把自己的开发者账号(http://open.qq.com)中的appkey加入到AndroidManifest.xml文件中。<br/>
