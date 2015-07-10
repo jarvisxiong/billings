@@ -49,6 +49,7 @@ Ajax.prototype = {
 		return result;
 	}
 };
+window.pingLunButtonList=[];
 /*
  * document.getElementById("btn").onclick=function(){ var p=''; var a=new
  * Ajax("http://peaches-pc:8080/billing/Bills.yy",p);
@@ -302,6 +303,7 @@ function wblObj(json_obj, theparentNode) {
 		}
 	};
 	wbl_operatebottom_div_ul_li_a1.innerHTML = "评论(" + json_obj.replys + ")";
+	pingLunButtonList.push(wbl_operatebottom_div_ul_li_a1);
 	wbl_operatebottom_div_ul_li_a2.setAttribute("href", 'javascript:void(0);');
 	wbl_operatebottom_div_ul_li_a2.onclick = function() {
 		if (wbl_weibo.lastChild.getAttribute("class") != "operate") {
@@ -387,7 +389,22 @@ var wbl_json_obj = (new Function("return " + wbl_json))();// 转换为json对象
 for ( var i = 0; i < wbl_json_obj.type.length; i++) {
 	new wblObj(wbl_json_obj.type[i], $$("bill_list"));
 }
-
+console.log(pingLunButtonList);
+console.log(window.printBill);
+if(window.printBill){
+	for(var i in pingLunButtonList){
+		pingLunButtonList[i].click();
+	}
+	var list=$c("r_rp");
+	for(var i in list){
+		try{
+		list[i].children[0].style.display='none';
+		list[i].children[1].style.display='none';
+		list[i].children[2].style.display='none';
+		list[i].children[3].style.display='none';
+		}catch(e){}
+	}
+}
 listjson = "";
 u = "";
 

@@ -338,7 +338,7 @@ public class BillsDAO extends BaseHibernateDAO implements DAO<Bills> {
 					+ "(((select x.bid,x.bio,x.bamount,x.btype,x.bimageid,x.bdate,x.bcaption,x.bbetravelleader,x.btid,x.replys,x.forwards,x.username,x.uid,x.bctype,x.rootbid,x.like_count from bills x where "
 					+ subQueryString + " (x.bctype=0 or x.bctype=2) and x.bdate between '" + startDate + "' AND '" + endDate
 					+ "' and isdeleted=0) a left join bills_bio b on a.bio=b.bio) left join bills_type c on c.btypeid=a.btype)" + " left join  bills_images d ON d.biid=a.bimageid "
-					+ "left JOIN bills_like e on e.uid='" + myUid + "' and e.bid=a.bid " + " ORDER BY a.bdate desc";
+					+ "left JOIN bills_like e on e.uid='" + myUid + "' and e.bid=a.bid " + " ORDER BY a.bdate " + (numPerPage > 100000 ? "asc" : "desc");
 			Query queryObject = getSession().createSQLQuery(queryString);
 			queryObject.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
 			queryObject.setFirstResult(pageNumber * numPerPage);
@@ -534,7 +534,7 @@ public class BillsDAO extends BaseHibernateDAO implements DAO<Bills> {
 					+ " x.bctype=1 and x.rootbid = (SELECT DISTINCT rootbid FROM bills WHERE frombid = '"
 					+ bid
 					+ "')  and isdeleted=0  "
-					+ (StringUtils.isNotBlank(date) ? " and bdate <'" + date + "'" : "") + " order by x.bdate desc limit 12";
+					+ (StringUtils.isNotBlank(date) ? " and bdate <'" + date + "'" : "") + " order by x.bdate asc limit 1000";
 			Query queryObject = getSession().createSQLQuery(queryString);
 			queryObject.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
 			return queryObject.list();

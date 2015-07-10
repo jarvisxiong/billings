@@ -111,9 +111,9 @@ html,body{background-color:#fefefe}
 .wb_c_wp{ clear:both; width:97%;}
 .pm .wb_c_wp{ margin-bottom:30px;}
 .author {width:54px; height:54px;}
-.user_info{ overflow:hidden;}
+.user_info{ overflow:hidden;vertical-align: middle;}
 .user_info .p_u{ font-weight:bold; color:#000; font-size:14px;}
-.user_info .p_t{ color:#F90; font-size:14px;}
+.user_info .p_t{ color:#F90; font-size:13px;margin-left:3px;line-height:16px;}
 .wb_c{ margin-top:8px; color:#424D52; clear:both;}
 .user_info .p_t span{ vertical-align:middle;}
 .user_info .p_t img{ vertical-align:middle; margin-right:8px;}

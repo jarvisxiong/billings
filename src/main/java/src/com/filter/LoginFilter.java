@@ -40,10 +40,10 @@ public class LoginFilter extends HttpServlet implements Filter {
 		if (!detectUrl(url)) {// 此处需要另外一个函数，来过滤掉不需要过滤（验证）的url
 			// 若访问后台资源滤到login
 			String user = session.getAttribute("UOID") == null ? null : session.getAttribute("UOID").toString();
-			if (user == null) {// 转入首面
-				response.sendRedirect(contextPath + "/Login.yy");
-				return;
-			}
+			// if (user == null) {// 转入首面 停止验证用户登录
+			// response.sendRedirect(contextPath + "/Login.yy");
+			// return;
+			// }
 			log.info("在LoginFilter中，用户" + user + "已经登录！");
 		}
 		// sRequest.setAttribute("templatePath", "template/default");

@@ -22,8 +22,8 @@ public class PushMessage {
 	protected static final Logger LOG = LoggerFactory.getLogger(PushMessage.class);
 
 	// demo App defined in resources/jpush-api.conf
-	private static final String appKey = "your appkey";
-	private static final String masterSecret = "your masterSecret";
+	private static final String appKey = "da7175add8b2936fc2163d8f";
+	private static final String masterSecret = "0c894816c3a704c74642bbbf";
 
 	public enum MessageAction {
 		ADD_FRIENDS, CONFIRM_FRIENDS, REPLY, CHATMESSAGE

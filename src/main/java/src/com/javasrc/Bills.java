@@ -196,7 +196,11 @@ public class Bills extends RequestParameter {
 		String parameter3 = "(uid='" + UOID + "' or uid in(select user_id_1 from relationship_friends where user_id_2='" + UOID
 				+ "' and status='2') or uid in(select user_id_2 from relationship_friends where user_id_1='" + UOID + "' and status='2')) and ";
 		/** 显示分页数据 */
-		List list = billsDao.findByPropertyPaging(parameter1, parameter2, parameter3, 0, 12, "0", currentdatems1 + " 23:59:59");
+		int size = 12;
+		if (request.getParameter("print") != null) {
+			size = 100000000;
+		}
+		List list = billsDao.findByPropertyPaging(parameter1, parameter2, parameter3, 0, size, "0", currentdatems1 + " 23:59:59");
 		list = TopicKeyWords.addUrlLink(list);
 		/** 获取显示多图片 开始 **/
 		dealMultiImage(list);
@@ -205,7 +209,11 @@ public class Bills extends RequestParameter {
 		String result = MapToJson.parseJson(list);
 		request.setAttribute("listjson", result);
 		request.setAttribute("list", list);
-		request.getRequestDispatcher(GlobalVariable.getWebsite_template() + "/jsp/bills.jsp").forward(request, response);
+		if (request.getParameter("print") != null) {
+			request.getRequestDispatcher(GlobalVariable.getWebsite_template() + "/jsp/print.jsp").forward(request, response);
+		} else {
+			request.getRequestDispatcher(GlobalVariable.getWebsite_template() + "/jsp/bills.jsp").forward(request, response);
+		}
 	}
 
 	private void dealMultiImage(List list) {

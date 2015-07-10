@@ -97,7 +97,6 @@ public class FileUpload {
 		// String(b,0,l);//eg.Content-Type:application/octet-stream(程序文件)
 		l = in.readLine(b, 0, b.length);
 		// String nulll=new String(b,0,l);//此值应为空
-
 		int nIndex = info.toLowerCase().indexOf("filename=\"");
 		int nLastIndex = info.toLowerCase().indexOf("\"", nIndex + 10);
 		String filepath = info.substring(nIndex + 10, nLastIndex);
