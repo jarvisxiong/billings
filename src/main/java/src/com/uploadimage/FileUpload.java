@@ -1,24 +1,18 @@
 package com.uploadimage;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-
-import javax.servlet.ServletInputStream;
-
-import lombok.extern.slf4j.Slf4j;
-
 import com.avatarUpload.ImageUtils;
 import com.avatarUpload.ImageUtils2;
 import com.hibernate.voDao.BillsImages;
 import com.hibernate.voDao.BillsImagesDAO;
 import com.weiwo.exception.BeanException;
+import lombok.extern.slf4j.Slf4j;
+
+import javax.servlet.ServletInputStream;
+import java.io.*;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 
 /**
  * 上传图片，并生成小文件
